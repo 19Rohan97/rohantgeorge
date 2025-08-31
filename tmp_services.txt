@@ -1,6 +1,4 @@
-﻿import type { ComponentType, SVGProps } from "react";
-import Container from "../ui/Container";
-import SectionHeader from "../ui/SectionHeader";
+﻿import type { ComponentType, SVGProps } from "react";\nimport Container from "../ui/Container";\nimport SectionHeader from "../ui/SectionHeader";
 
 const WPIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden {...props}>
