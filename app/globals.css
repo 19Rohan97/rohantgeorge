@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Process arc animation */
+@keyframes dash { to { stroke-dashoffset: 0; } }
+.process-arc { animation-name: dash; animation-timing-function: linear; animation-fill-mode: forwards; }
+@media (prefers-reduced-motion: reduce) { .process-arc { animation: none !important; stroke-dashoffset: 0 !important; } }
