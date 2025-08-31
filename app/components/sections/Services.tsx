@@ -1,5 +1,4 @@
-﻿import Container from "../ui/Container";
-import SectionHeader from "../ui/SectionHeader";
+﻿import type { ComponentType, SVGProps } from "react";\nimport Container from "../ui/Container";\nimport SectionHeader from "../ui/SectionHeader";
 
 const WPIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden {...props}>
@@ -33,7 +32,7 @@ const SeoIcon = (props: React.SVGProps<SVGSVGElement>) => (
 type Item = {
   title: string;
   desc: string;
-  Icon: (p: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  Icon: ComponentType<SVGProps<SVGSVGElement>>;
   badge: string;
 };
 
@@ -90,3 +89,4 @@ export default function Services() {
     </section>
   );
 }
+
