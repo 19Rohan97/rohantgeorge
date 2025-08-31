@@ -19,11 +19,33 @@ const MailIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function Contact() {
   const [status, setStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("Thanks! I will get back to you.");
-    (e.currentTarget as HTMLFormElement).reset();
+    const form = e.currentTarget as HTMLFormElement;
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+    setLoading(true);
+    setStatus(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data?.ok) {
+        const detail = typeof data?.detail === 'string' ? data.detail : JSON.stringify(data?.detail || {});
+        throw new Error(data?.error ? `${data.error}${detail ? `: ${detail}` : ''}` : "Failed to send. Please try again.");
+      }
+      setStatus("Thanks! Your message has been sent.");
+      form.reset();
+    } catch (err: any) {
+      setStatus(err?.message || "Something went wrong. Please email me directly.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -89,9 +111,10 @@ export default function Contact() {
               <div className="flex items-center gap-3">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 text-sm font-medium hover:opacity-95"
+                  disabled={loading}
+                  className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 text-sm font-medium hover:opacity-95 disabled:opacity-60"
                 >
-                  Send
+                  {loading ? "Sending…" : "Send"}
                 </button>
                 {status && (
                   <p className="text-sm text-foreground/70">{status}</p>

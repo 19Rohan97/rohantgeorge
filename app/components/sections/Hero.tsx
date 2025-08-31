@@ -13,12 +13,12 @@ export default function Hero() {
       </div>
 
       <Container>
-        <p className="text-xs uppercase tracking-wider text-foreground/60">
+        <p className="font-eyebrow text-xs uppercase tracking-wider text-foreground/60">
           Welcome
         </p>
-        <h2 className="mt-2 text-4xl md:text-6xl font-extrabold leading-tight">
+        <h2 className="font-heading mt-2 text-4xl md:text-6xl font-extrabold leading-tight">
           <span className="bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
-            Hi, I’m Rohan
+            Hi, I'm Rohan
           </span>
           <span className="block text-foreground">
             I build{" "}
@@ -31,8 +31,6 @@ export default function Hero() {
                   "custom themes",
                   "plugins",
                   "Gutenberg blocks",
-                  "Jamstack sites",
-                  "performance audits",
                 ]}
               />
             </span>
@@ -66,7 +64,7 @@ export default function Hero() {
 
         <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-foreground/70">
           <a
-            href="#"
+            href="https://github.com/19Rohan97/"
             className="inline-flex items-center gap-2 hover:text-foreground"
           >
             <svg
@@ -81,7 +79,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/rohangeorge4/"
             className="inline-flex items-center gap-2 hover:text-foreground"
           >
             <svg
@@ -96,7 +94,7 @@ export default function Hero() {
             LinkedIn
           </a>
           <a
-            href="mailto:hello@example.com"
+            href="mailto:rohantgeorge05@gmail.com"
             className="inline-flex items-center gap-2 hover:text-foreground"
           >
             <svg

@@ -8,8 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Optional: keep Tailwind tokens if used elsewhere */
+  --font-sans: var(--font-body, ui-sans-serif);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,10 +20,68 @@
   }
 }
 
+/* Custom local fonts */
+@font-face {
+  font-family: "InterVar";
+  src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "InterVar";
+  src: url("/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MontserratVar";
+  src: url("/fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MontserratVar";
+  src: url("/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PlayfairVar";
+  src: url("/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PlayfairVar";
+  src: url("/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-heading: "InterVar", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+  --font-body: "MontserratVar", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+  --font-eyebrow: "PlayfairVar", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-eyebrow {
+  font-family: var(--font-eyebrow);
 }
 
 
