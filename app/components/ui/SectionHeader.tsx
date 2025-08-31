@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 
-export type IconType = (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+export type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 export default function SectionHeader({
   title,
@@ -27,3 +27,4 @@ export default function SectionHeader({
     </header>
   );
 }
+
